@@ -1,13 +1,8 @@
 import pytest
-from app import app
+from api import app # Flask instance of the API
 
+def test_index_route():
+    response = app.test_client().get('/')
 
-@pytest.fixture
-def client():
-    with app.test_client() as client:
-        yield client
-
-def test_homepage(client):
-    response = client.get('/api/products')  # Оновіть маршрут тут
     assert response.status_code == 200
-
+    assert response.data.decode('utf-8') == 'Testing, Flask!'
