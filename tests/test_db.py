@@ -1,6 +1,9 @@
 import pytest
 from peewee import OperationalError, SqliteDatabase
-from db import ProductModel
+from db import *
+
+# Решта вашого коду для тестів...
+
 
 @pytest.fixture(scope="function", autouse=True)
 def test_db():
