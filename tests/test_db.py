@@ -1,14 +1,13 @@
 import pytest
-from db import db, ProductModel, create_product, get_product_by_id, update_product, delete_product
-from peewee import OperationalError, DoesNotExist
+from peewee import OperationalError, SqliteDatabase
+from db import ProductModel
 
-
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="function", autouse=True)
 def test_db():
+    db = SqliteDatabase(':memory:')  # Використовуємо пам'ять як базу даних для тестів
+    ProductModel._meta.database = db
     db.connect()
-    db.create_tables([ProductModel])
     yield
-    db.drop_tables([ProductModel])
     db.close()
 
 
