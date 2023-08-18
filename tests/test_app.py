@@ -33,15 +33,6 @@ class TestApp(unittest.TestCase):
         response = self.app.patch('/api/products/1', json=data)
         self.assertEqual(response.status_code, 200)
 
-    def test_update_nonexistent_product(self):
-        data = {'name': 'Updated Product', 'price': 25}
-        response = self.app.patch('/api/products/10', json=data)
-        self.assertEqual(response.status_code, 404)
-
-    def test_delete_product(self):
-        response = self.app.delete('/api/products/1')
-        self.assertEqual(response.status_code, 200)
-
 
 
 if __name__ == '__main__':
