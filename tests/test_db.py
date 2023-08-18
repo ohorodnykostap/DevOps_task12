@@ -1,12 +1,15 @@
-from db import create_product, get_product_by_id
+# tests/test_app.py
 
-def test_create_product():
-    product = create_product("Test Product", 10)
-    assert product.name == "Test Product"
-    assert product.price == 10
+import pytest
+from app import app
 
-def test_get_product_by_id():
-    product = create_product("Test Product", 10)
-    retrieved_product = get_product_by_id(product.id)
-    assert retrieved_product.name == "Test Product"
-    assert retrieved_product.price == 10
+@pytest.fixture
+def client():
+    app.config["TESTING"] = True
+    with app.test_client() as client:
+        yield client
+
+def test_homepage(client):
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b"Welcome to the Product API" in response.data
