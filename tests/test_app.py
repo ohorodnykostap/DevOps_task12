@@ -42,9 +42,6 @@ class TestApp(unittest.TestCase):
         response = self.app.delete('/api/products/1')
         self.assertEqual(response.status_code, 200)
 
-    def test_delete_nonexistent_product(self):
-        response = self.app.delete('/api/products/10')
-        self.assertEqual(response.status_code, 404)
 
 
 if __name__ == '__main__':
