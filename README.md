@@ -1,4 +1,4 @@
-![Workflow Status](https://github.com/ohorodnykostap/DevOps_task12/actions/workflows/Python%20CI/badge.svg)
+![](https://github.com/ohorodnykostap/DevOps_task12/actions/workflows/python-app.yml/badge.svg)
 
 
 
