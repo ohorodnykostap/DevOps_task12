@@ -34,4 +34,3 @@ def test_delete_product(test_db):
     delete_product(product.id)
     with pytest.raises(ProductModel.DoesNotExist):
         get_product_by_id(product.id)
-
