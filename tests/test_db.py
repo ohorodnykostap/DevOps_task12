@@ -1,7 +1,11 @@
 import unittest
 from peewee import SqliteDatabase
+import unittest
+from ..app import app  #
+from ..db import ProductModel, create_product, get_product_by_id, update_product, delete_product
 
-from db import ProductModel, create_product, get_product_by_id, update_product, delete_product
+# Решта тестів залишаються без змін
+
 
 class TestDBFunctions(unittest.TestCase):
     def setUp(self):
