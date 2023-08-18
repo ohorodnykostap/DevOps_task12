@@ -1,27 +1,12 @@
-# -*- coding: utf-8 -*-
+from db import create_product, get_product_by_id
 
-import unittest
-from peewee import SqliteDatabase
-import unittest
-from ..app import app  #
-from ..db import ProductModel, create_product, get_product_by_id, update_product, delete_product
+def test_create_product():
+    product = create_product("Test Product", 10)
+    assert product.name == "Test Product"
+    assert product.price == 10
 
-# Решта тестів залишаються без змін
-
-
-class TestDBFunctions(unittest.TestCase):
-    def setUp(self):
-        self.test_db = SqliteDatabase(':memory:')  # In-memory database for testing
-        ProductModel._meta.database = self.test_db
-        self.test_db.connect()
-        self.test_db.create_tables([ProductModel])
-
-        self.product = create_product('Test Product', 50)
-
-    def tearDown(self):
-        self.test_db.close()
-
-
-
-if __name__ == '__main__':
-    unittest.main()
+def test_get_product_by_id():
+    product = create_product("Test Product", 10)
+    retrieved_product = get_product_by_id(product.id)
+    assert retrieved_product.name == "Test Product"
+    assert retrieved_product.price == 10
