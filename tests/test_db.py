@@ -1,11 +1,7 @@
 import unittest
 from peewee import SqliteDatabase
-import sys
-import os
 
-# Додаємо абсолютний шлях до кореня проекту до sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ..db import ProductModel, create_product, get_product_by_id, update_product, delete_product
+from db import ProductModel, create_product, get_product_by_id, update_product, delete_product
 
 class TestDBFunctions(unittest.TestCase):
     def setUp(self):
